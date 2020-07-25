@@ -1,2 +1,7 @@
 # Project exclude paths
 /node_modules/
+
+.idea/
+yarn.lock
+.env
+message-app-backend.iml
