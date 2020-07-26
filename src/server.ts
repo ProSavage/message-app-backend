@@ -7,6 +7,7 @@ import contactsRouter from "./routes/contacts/ContactsRouter";
 import socket from "socket.io"
 import {connectToDb} from "./db/MongoClient";
 import {getUserFromSession} from "./SessionManager";
+import axios from "axios";
 
 
 const app = express()
@@ -51,9 +52,14 @@ io.on("connection", async (socket) => {
                 console.log(`${messageData.recipient} is not connected, not sending.`)
                 return
             }
+            const response = await axios.post("http://localhost:1000/",{
+                message: messageData.message
+            })
+
             recipientSocket.emit("messaged", {
                 from: user.username,
-                message: messageData.message
+                message: messageData.message,
+                flag: response.data
             })
         })
 
