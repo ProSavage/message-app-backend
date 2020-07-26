@@ -6,6 +6,10 @@ const authSignupRouter = express.Router()
 
 authSignupRouter.post("/signup", async (req, res) => {
     const {username, email, password} = req.body
+    if (username.length < 3) {
+        res.json({success: false, message: "Username must be 3 or more chars long."})
+        return
+    }
     const { getUserByEmail, registerUser } = await createClient()
     const user = await getUserByEmail(email)
     if (user) {

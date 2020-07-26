@@ -2,7 +2,6 @@ import express from "express";
 import authLogin from "./AuthLoginRoute";
 import authSignup from "./AuthSignupRoute";
 import authValidateToken from "./AuthValidateTokenRoute";
-import authChangePassword from "./AuthValidateTokenRoute";
 
 const authRouter = express.Router();
 

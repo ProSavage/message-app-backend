@@ -1,0 +1,17 @@
+
+{
+  "version": 2,
+  "name": "message-app-backend",
+  "alias": "message-app-backend.vercel.app",
+  "env": {
+    "IS_NOW": "true"
+  },
+  "builds": [{ "src": "dist/**", "use": "@now/node" }],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/dist/server.js",
+      "methods": ["POST", "OPTIONS", "GET"]
+    }
+  ]
+}
